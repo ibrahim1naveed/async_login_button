@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+   <html>
+   <head>
+   
+      <title></title>
+</head>
+<body>
+        <div id="demo">
+          <h1>Please login</h1>
+<label>Username:<input type="text" id="username" />
+<br />
+<label>Password:<input type="password" id="password" />
+<br />
+<button type="button" onclick="loadDoc()">Login</button>
+        </div>
+
+        <script>
+        
+                
+        function loadDoc() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+
+        xhttp.open("POST", "cgi-bin/checkpass.py", true);
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        xhttp.send(String(username) + "&" + String(password));
+
+        }
+        </script>
+
+
+</body>
+</html>
